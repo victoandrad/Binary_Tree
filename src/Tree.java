@@ -42,6 +42,10 @@ public class Tree<T> {
         return new Tree<>(root);
     }
 
+    public int size() {
+        return this.depthSearch().size();
+    }
+
     public List<Node<T>> depthSearch() {
 
         List<Node<T>> values = new ArrayList<>();
