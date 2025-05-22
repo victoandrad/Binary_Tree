@@ -76,7 +76,6 @@ public class BinaryTree<T> {
                 stack.push(current);
                 current = current.getLeft();
             }
-
             current = stack.pop();
             values.add(current);
             current = current.getRight();
@@ -86,7 +85,29 @@ public class BinaryTree<T> {
     }
 
     public List<Node<T>> inPostOrderSearch() {
-        return new ArrayList<>();
+
+        List<Node<T>> values = new ArrayList<>();
+        Stack<Node<T>> stack = new Stack<>();
+        Node<T> current = root;
+        Node<T> previous = null;
+
+        while (current != null || !stack.isEmpty()) {
+            while (current != null) {
+                stack.push(current);
+                current = current.getLeft();
+            }
+            current = stack.peek();
+            if (current.getRight() == null || current.getRight() == previous) {
+                values.add(current);
+                stack.pop();
+                previous = current;
+                current = null;
+            } else {
+                current = current.getRight();
+            }
+        }
+
+        return values;
     }
 
     public List<Node<T>> levelSearch() {
