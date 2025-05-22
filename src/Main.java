@@ -1,9 +1,9 @@
+import binary_tree.BinaryTree;
+
 public class Main {
     public static void main(String[] args) {
-
-        Tree<Integer> tree = Tree.getExampleTree();
-        tree.printDepthSearch();
-        tree.printBreadthSearch();
-
+        BinaryTree<Integer> binaryTree = BinaryTree.getExampleTree();
+        binaryTree.printPreOrderSearch();
+        binaryTree.printLevelSearch();
     }
 }
