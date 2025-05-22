@@ -4,5 +4,6 @@ public class Main {
         Tree<Integer> tree = Tree.getExampleTree();
         tree.printDepthSearch();
         tree.printBreadthSearch();
+
     }
 }

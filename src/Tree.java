@@ -42,10 +42,10 @@ public class Tree<T> {
     }
 
     public int size() {
-        return this.depthSearch().size();
+        return this.preOrderSearch().size();
     }
 
-    public List<Node<T>> depthSearch() {
+    public List<Node<T>> preOrderSearch() {
 
         List<Node<T>> values = new ArrayList<>();
         Stack<Node<T>> stack = new Stack<>();
@@ -66,7 +66,7 @@ public class Tree<T> {
         return values;
     }
 
-    public List<Node<T>> breadthSearch() {
+    public List<Node<T>> levelSearch() {
 
         List<Node<T>> values = new ArrayList<>();
         Queue<Node<T>> queue = new LinkedList<>();
@@ -87,18 +87,18 @@ public class Tree<T> {
         return values;
     }
 
-    public void printDepthSearch() {
-        List<Node<T>> values = this.depthSearch();
-        System.out.print("Depth Search: [");
+    public void printPreOrderSearch() {
+        List<Node<T>> values = this.preOrderSearch();
+        System.out.print("Pre-order Search: [");
         for (int i = 0; i < values.size(); i++) {
             System.out.print(values.get(i).getValue() + (i < values.size() - 1 ? ", " : ""));
         }
         System.out.print("]\n");
     }
 
-    public void printBreadthSearch() {
-        List<Node<T>> values = this.breadthSearch();
-        System.out.print("Breadth Search: [");
+    public void printLevelSearch() {
+        List<Node<T>> values = this.levelSearch();
+        System.out.print("Level Search: [");
         for (int i = 0; i < values.size(); i++) {
             System.out.print(values.get(i).getValue() + (i < values.size() - 1 ? ", " : ""));
         }
