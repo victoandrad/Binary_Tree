@@ -25,20 +25,17 @@ public class BinaryTree<T> {
     // METHODS
     // ===========================
 
-    public static BinaryTree<Integer> getExampleTree() {
-        Node<Integer> root = new Node<>(6);
+    public static BinaryTree<String> getExampleTree() {
+        Node<String> root = new Node<>("A");
 
         // Level 1
-        root.setLeft(new Node<>(4));
-        root.setRight(new Node<>(7));
+        root.setLeft(new Node<>("B"));
+        root.setRight(new Node<>("C"));
 
         // Level 2
-        root.getLeft().setLeft(new Node<>(2));
-        root.getLeft().setRight(new Node<>(5));
-        root.getRight().setRight(new Node<>(9));
-
-        // Level 3
-        root.getRight().getRight().setRight(new Node<>(11));
+        root.getLeft().setLeft(new Node<>("D"));
+        root.getLeft().setRight(new Node<>("E"));
+        root.getRight().setRight(new Node<>("F"));
 
         return new BinaryTree<>(root);
     }
@@ -89,7 +86,7 @@ public class BinaryTree<T> {
     }
 
     public List<Node<T>> inPostOrderSearch() {
-        return null;
+        return new ArrayList<>();
     }
 
     public List<Node<T>> levelSearch() {
