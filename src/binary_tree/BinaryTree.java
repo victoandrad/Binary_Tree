@@ -40,15 +40,66 @@ public class BinaryTree<T> {
         return new BinaryTree<>(root);
     }
 
-    public int size() {
-        return this.nonRecursivePreOrderSearch().size();
+    public int countNodes(Node<T> node) {
+        if (node == null) return 0;
+        return 1 + countNodes(node.getLeft()) + countNodes(node.getRight());
     }
 
-    public List<Node<T>> nonRecursivePreOrderSearch() {
+    private void printValues(List<Node<T>> values) {
+        System.out.print("[");
+        for (int i = 0; i < values.size(); i++) {
+            System.out.print(values.get(i).getValue() + (i < values.size() - 1 ? ", " : ""));
+        }
+        System.out.print("]\n");
+    }
 
+    // RECURSIVE
+
+    public void recursivePreOrder(Node<T> node) {
+        if (node != null) {
+            System.out.println(node.getValue() + " ");
+            recursivePreOrder(node.getLeft());
+            recursivePreOrder(node.getRight());
+        }
+    }
+
+    public void recursiveInOrder(Node<T> node) {
+        if (node != null) {
+            recursiveInOrder(node.getLeft());
+            System.out.println(node.getValue() + " ");
+            recursiveInOrder(node.getRight());
+        }
+    }
+
+    public void recursivePostOrder(Node<T> node) {
+        if (node != null) {
+            recursivePostOrder(node.getLeft());
+            recursivePostOrder(node.getRight());
+            System.out.println(node.getValue() + " ");
+        }
+    }
+
+    public void recursiveLevelOrder(Node<T> node) {
+        if (node == null) return;
+
+        Queue<Node<T>> queue = new LinkedList<>();
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+            Node<T> current = queue.poll();
+            System.out.println(current.getValue() + " ");
+
+            if (current.getLeft() != null) queue.add(current.getLeft());
+            if (current.getRight() != null) queue.add(current.getRight());
+        }
+    }
+
+    // NON-RECURSIVE
+
+    public void nonRecursivePreOrder(Node<T> node) {
         List<Node<T>> values = new ArrayList<>();
         Stack<Node<T>> stack = new Stack<>();
-        stack.push(root);
+        stack.push(node);
 
         while (!stack.isEmpty()) {
             Node<T> current = stack.pop();
@@ -61,15 +112,13 @@ public class BinaryTree<T> {
                 stack.push(current.getLeft());
             }
         }
-
-        return values;
+        printValues(values);
     }
 
-    public List<Node<T>> nonRecursiveInOrderSearch() {
-
+    public void nonRecursiveInOrder(Node<T> node) {
         List<Node<T>> values = new ArrayList<>();
         Stack<Node<T>> stack = new Stack<>();
-        Node<T> current = root;
+        Node<T> current = node;
 
         while (current != null || !stack.isEmpty()) {
             while (current != null) {
@@ -80,15 +129,13 @@ public class BinaryTree<T> {
             values.add(current);
             current = current.getRight();
         }
-
-        return values;
+        printValues(values);
     }
 
-    public List<Node<T>> nonRecursiveInPostOrderSearch() {
-
+    public void nonRecursivePostOrder(Node<T> node) {
         List<Node<T>> values = new ArrayList<>();
         Stack<Node<T>> stack = new Stack<>();
-        Node<T> current = root;
+        Node<T> current = node;
         Node<T> previous = null;
 
         while (current != null || !stack.isEmpty()) {
@@ -106,15 +153,13 @@ public class BinaryTree<T> {
                 current = current.getRight();
             }
         }
-
-        return values;
+        printValues(values);
     }
 
-    public List<Node<T>> nonRecursiveLevelSearch() {
-
+    public void nonRecursiveLevelOrder(Node<T> node) {
         List<Node<T>> values = new ArrayList<>();
         Queue<Node<T>> queue = new LinkedList<>();
-        queue.add(root);
+        queue.add(node);
 
         while (!queue.isEmpty()) {
             Node<T> current = queue.poll();
@@ -127,16 +172,7 @@ public class BinaryTree<T> {
                 queue.add(current.getRight());
             }
         }
-
-        return values;
-    }
-
-    public void printValues(List<Node<T>> values) {
-        System.out.print("[");
-        for (int i = 0; i < values.size(); i++) {
-            System.out.print(values.get(i).getValue() + (i < values.size() - 1 ? ", " : ""));
-        }
-        System.out.print("]\n");
+        printValues(values);
     }
 
     // ===========================
