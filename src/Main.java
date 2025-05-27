@@ -9,7 +9,7 @@ public class Main {
         
         System.out.println("Count nodes: " + binaryTree.countNodes(root));
 
-        System.out.print("\n---------- Recursive Methods ----------\n");
+        System.out.println("========== Recursive Methods ==========");
 
         System.out.print("Pre-Order:    ");
         binaryTree.recursivePreOrder(root);
@@ -23,7 +23,7 @@ public class Main {
         System.out.print("Level-Order:  ");
         binaryTree.recursiveLevelOrder(root);
 
-        System.out.println("---------- Non-recursive Methods ----------");
+        System.out.println("========== Non-recursive Methods ==========");
         System.out.print("Pre-Order:    ");
         binaryTree.nonRecursivePreOrder(root);
 
