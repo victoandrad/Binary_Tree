@@ -41,10 +41,10 @@ public class BinaryTree<T> {
     }
 
     public int size() {
-        return this.preOrderSearch().size();
+        return this.nonRecursivePreOrderSearch().size();
     }
 
-    public List<Node<T>> preOrderSearch() {
+    public List<Node<T>> nonRecursivePreOrderSearch() {
 
         List<Node<T>> values = new ArrayList<>();
         Stack<Node<T>> stack = new Stack<>();
@@ -65,7 +65,7 @@ public class BinaryTree<T> {
         return values;
     }
 
-    public List<Node<T>> inOrderSearch() {
+    public List<Node<T>> nonRecursiveInOrderSearch() {
 
         List<Node<T>> values = new ArrayList<>();
         Stack<Node<T>> stack = new Stack<>();
@@ -84,7 +84,7 @@ public class BinaryTree<T> {
         return values;
     }
 
-    public List<Node<T>> inPostOrderSearch() {
+    public List<Node<T>> nonRecursiveInPostOrderSearch() {
 
         List<Node<T>> values = new ArrayList<>();
         Stack<Node<T>> stack = new Stack<>();
@@ -110,7 +110,7 @@ public class BinaryTree<T> {
         return values;
     }
 
-    public List<Node<T>> levelSearch() {
+    public List<Node<T>> nonRecursiveLevelSearch() {
 
         List<Node<T>> values = new ArrayList<>();
         Queue<Node<T>> queue = new LinkedList<>();
@@ -131,36 +131,8 @@ public class BinaryTree<T> {
         return values;
     }
 
-    public void printPreOrderSearch() {
-        List<Node<T>> values = this.preOrderSearch();
-        System.out.print("Pre-order Search: [");
-        for (int i = 0; i < values.size(); i++) {
-            System.out.print(values.get(i).getValue() + (i < values.size() - 1 ? ", " : ""));
-        }
-        System.out.print("]\n");
-    }
-
-    public void printInOrderSearch() {
-        List<Node<T>> values = this.inOrderSearch();
-        System.out.print("In-order Search: [");
-        for (int i = 0; i < values.size(); i++) {
-            System.out.print(values.get(i).getValue() + (i < values.size() - 1 ? ", " : ""));
-        }
-        System.out.print("]\n");
-    }
-
-    public void printPostOrderSearch() {
-        List<Node<T>> values = this.inPostOrderSearch();
-        System.out.print("Post-order Search: [");
-        for (int i = 0; i < values.size(); i++) {
-            System.out.print(values.get(i).getValue() + (i < values.size() - 1 ? ", " : ""));
-        }
-        System.out.print("]\n");
-    }
-
-    public void printLevelSearch() {
-        List<Node<T>> values = this.levelSearch();
-        System.out.print("Level Search: [");
+    public void printValues(List<Node<T>> values) {
+        System.out.print("[");
         for (int i = 0; i < values.size(); i++) {
             System.out.print(values.get(i).getValue() + (i < values.size() - 1 ? ", " : ""));
         }
