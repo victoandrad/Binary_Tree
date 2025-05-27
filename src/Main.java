@@ -1,36 +1,39 @@
 import binary_tree.BinaryTree;
+import binary_tree.Node;
 
 public class Main {
     public static void main(String[] args) {
 
         BinaryTree<String> binaryTree = BinaryTree.getExampleTree();
-        System.out.println("Count nodes: " + binaryTree.countNodes(binaryTree.getRoot()));
+        Node<String> root = binaryTree.getRoot();
+        
+        System.out.println("Count nodes: " + binaryTree.countNodes(root));
 
         System.out.print("\n---------- Recursive Methods ----------\n");
 
         System.out.print("Pre-Order:    ");
-        binaryTree.recursivePreOrder(binaryTree.getRoot());
+        binaryTree.recursivePreOrder(root);
 
         System.out.print("In-Order:     ");
-        binaryTree.recursiveInOrder(binaryTree.getRoot());
+        binaryTree.recursiveInOrder(root);
 
         System.out.print("Post-Order:   ");
-        binaryTree.recursivePostOrder(binaryTree.getRoot());
+        binaryTree.recursivePostOrder(root);
 
         System.out.print("Level-Order:  ");
-        binaryTree.recursiveLevelOrder(binaryTree.getRoot());
+        binaryTree.recursiveLevelOrder(root);
 
         System.out.println("---------- Non-recursive Methods ----------");
         System.out.print("Pre-Order:    ");
-        binaryTree.nonRecursivePreOrder(binaryTree.getRoot());
+        binaryTree.nonRecursivePreOrder(root);
 
         System.out.print("In-Order:     ");
-        binaryTree.nonRecursiveInOrder(binaryTree.getRoot());
+        binaryTree.nonRecursiveInOrder(root);
 
         System.out.print("Post-Order:   ");
-        binaryTree.nonRecursivePostOrder(binaryTree.getRoot());
+        binaryTree.nonRecursivePostOrder(root);
 
         System.out.print("Level-Order:  ");
-        binaryTree.nonRecursiveLevelOrder(binaryTree.getRoot());
+        binaryTree.nonRecursiveLevelOrder(root);
     }
 }
