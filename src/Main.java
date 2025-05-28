@@ -6,10 +6,11 @@ public class Main {
 
         BinaryTree<String> binaryTree = BinaryTree.getExampleTree();
         Node<String> root = binaryTree.getRoot();
-        
-        System.out.println("Count nodes: " + binaryTree.countNodes(root));
 
         System.out.println("========== Recursive Methods ==========");
+
+        System.out.println("Count nodes: " + binaryTree.recursiveCountNodes(root));
+        System.out.println("Count leaf nodes: " + binaryTree.recursiveCountLeafNodes(root));
 
         System.out.print("Pre-Order:    ");
         binaryTree.recursivePreOrder(root);
@@ -24,6 +25,10 @@ public class Main {
         binaryTree.recursiveLevelOrder(root);
 
         System.out.println("========== Non-recursive Methods ==========");
+
+        System.out.println("Count nodes: " + binaryTree.nonRecursiveCountNodes(root));
+        System.out.println("Count leaf nodes: " + binaryTree.nonRecursiveCountLeafNodes(root));
+
         System.out.print("Pre-Order:    ");
         binaryTree.nonRecursivePreOrder(root);
 

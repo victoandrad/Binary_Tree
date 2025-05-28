@@ -102,6 +102,37 @@ public class BinaryTree<T> {
 
     // NON-RECURSIVE
 
+    public int nonRecursiveCountNodes(Node<T> node) {
+        int count = 0;
+        Stack<Node<T>> stack = new Stack<>();
+        stack.push(node);
+
+        while (!stack.isEmpty()) {
+            Node<T> current = stack.pop();
+            count++;
+            if (current.getRight() != null) stack.push(current.getRight());
+            if (current.getLeft() != null) stack.push(current.getLeft());
+        }
+        return count;
+    }
+
+    public int nonRecursiveCountLeafNodes(Node<T> node) {
+        int count = 0;
+        Stack<Node<T>> stack = new Stack<>();
+        stack.push(node);
+
+        while (!stack.isEmpty()) {
+            Node<T> current = stack.pop();
+            if (current.getLeft() == null && current.getRight() == null) {
+                count++;
+            } else {
+                if (current.getRight() != null) stack.push(current.getRight());
+                if (current.getLeft() != null) stack.push(current.getLeft());
+            }
+        }
+        return count;
+    }
+
     public void nonRecursivePreOrder(Node<T> node) {
         List<Node<T>> values = new ArrayList<>();
         Stack<Node<T>> stack = new Stack<>();
