@@ -40,11 +40,6 @@ public class BinaryTree<T> {
         return new BinaryTree<>(root);
     }
 
-    public int countNodes(Node<T> node) {
-        if (node == null) return 0;
-        return 1 + countNodes(node.getLeft()) + countNodes(node.getRight());
-    }
-
     private void printValues(List<Node<T>> values) {
         System.out.print("[");
         for (int i = 0; i < values.size(); i++) {
@@ -54,6 +49,17 @@ public class BinaryTree<T> {
     }
 
     // RECURSIVE
+
+    public int recursiveCountNodes(Node<T> node) {
+        if (node == null) return 0;
+        return 1 + recursiveCountNodes(node.getLeft()) + recursiveCountNodes(node.getRight());
+    }
+
+    public int recursiveCountLeafNodes(Node<T> node) {
+        if (node == null) return 0;
+        if (node.getLeft() == null && node.getRight() == null) return 1;
+        return recursiveCountLeafNodes(node.getLeft()) + recursiveCountLeafNodes(node.getRight());
+    }
 
     public void recursivePreOrder(Node<T> node) {
         if (node != null) {
