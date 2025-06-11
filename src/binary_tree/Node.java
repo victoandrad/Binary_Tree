@@ -7,8 +7,7 @@ public class Node<T> {
     // ===========================
 
     private T value;
-    private Node<T> left;
-    private Node<T> right;
+    private Node<T> left, right;
 
     // ===========================
     // CONSTRUCTORS
@@ -22,27 +21,31 @@ public class Node<T> {
     }
 
     // ===========================
-    // GETTERS & SETTERS
+    // GETTERS
     // ===========================
 
     public T getValue() {
         return value;
     }
 
-    public T setValue(T value) {
-        return this.value = value;
-    }
-
     public Node<T> getLeft() {
         return left;
     }
 
-    public void setLeft(Node<T> left) {
-        this.left = left;
-    }
-
     public Node<T> getRight() {
         return right;
+    }
+
+    // ===========================
+    // SETTERS
+    // ===========================
+
+    public T setValue(T value) {
+        return this.value = value;
+    }
+
+    public void setLeft(Node<T> left) {
+        this.left = left;
     }
 
     public void setRight(Node<T> right) {
