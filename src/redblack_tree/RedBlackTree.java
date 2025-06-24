@@ -24,6 +24,17 @@ public class RedBlackTree {
     // ===========================
 
     public void insert(int data) {
+        Node node = new Node(data, "red");
+        if (root == null) {
+            node.setColor("black");
+            root = node;
+            return;
+        }
+
+        Node current = root;
+        while (current != null) {
+        }
+
     }
 
     public void delete(int data) {

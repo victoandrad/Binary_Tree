@@ -1,6 +1,6 @@
 package avl_tree;
 
-public class Tree {
+public class AVLTree {
 
     // ===========================
     // VARIABLES
@@ -12,7 +12,7 @@ public class Tree {
     // CONSTRUCTORS
     // ===========================
 
-    public Tree(Node root) {
+    public AVLTree(Node root) {
         this.root = root;
     }
 
@@ -60,8 +60,43 @@ public class Tree {
         return y;
     }
 
+    public void insert(int key){
+        this.root = insert(this.root, key);
+    }
+
+    private Node insert(Node node, int key) {
+        if (node == null) {
+            return new Node(key);
+        }
+
+        if (key < node.getKey()) {
+            node.setLeft(insert(node.getLeft(), key));
+        } else if (key > node.getKey()) {
+            node.setRight(insert(node.getRight(), key));
+        } else {
+            return node;
+        }
+
+        node.setHeight(Math.max(height(node.getLeft()), height(node.getRight())) + 1);
+
+        int balance =  getBalance(node);
+        if (balance > 1 && key < node.getLeft().getKey()) {
+            return rotateRight(node);
+        } else if (balance < -1 && key > node.getRight().getKey()) {
+            return rotateLeft(node);
+        } else if (balance > 1 && key > node.getLeft().getKey()) {
+            node.setLeft(rotateLeft(node.getLeft()));
+            return rotateRight(node);
+        } else if (balance < -1 && key < node.getRight().getKey()) {
+            node.setRight(rotateRight(node.getRight()));
+            return rotateLeft(node);
+        }
+
+        return node;
+    }
+
     // ===========================
-    // GETTERS & SETTERS
+    // GETTERS
     // ===========================
 
     public Node getRoot() {
