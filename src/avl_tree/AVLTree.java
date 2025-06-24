@@ -1,5 +1,9 @@
 package avl_tree;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 public class AVLTree {
 
     // ===========================
@@ -12,13 +16,28 @@ public class AVLTree {
     // CONSTRUCTORS
     // ===========================
 
-    public AVLTree(Node root) {
-        this.root = root;
+    public AVLTree() {
     }
 
     // ===========================
     // METHODS
     // ===========================
+
+    public static AVLTree getExampleTree() {
+        AVLTree avlTree = new AVLTree();
+        for (int i = 0; i < 10; i++) {
+            avlTree.insert(i);
+        }
+        return avlTree;
+    }
+
+    private void printValues(List<Node> values) {
+        System.out.print("[");
+        for (int i = 0; i < values.size(); i++) {
+            System.out.print(values.get(i).getKey() + (i < values.size() - 1 ? ", " : ""));
+        }
+        System.out.print("]\n");
+    }
 
     private int height(Node node) {
         return node == null ? 0 : node.getHeight();
@@ -93,6 +112,25 @@ public class AVLTree {
         }
 
         return node;
+    }
+
+    public void preOrder(Node node) {
+        List<Node> values = new ArrayList<>();
+        Stack<Node> stack = new Stack<>();
+        stack.push(node);
+
+        while (!stack.isEmpty()) {
+            Node current = stack.pop();
+            values.add(current);
+
+            if (current.getRight() != null) {
+                stack.push(current.getRight());
+            }
+            if (current.getLeft() != null) {
+                stack.push(current.getLeft());
+            }
+        }
+        printValues(values);
     }
 
     // ===========================
